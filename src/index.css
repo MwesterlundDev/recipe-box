@@ -1,13 +1,84 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+	-webkit-box-sizing: border-box;
+	/* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;
+	/* Firefox, other Gecko */
+	box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html,
+body {
+	margin: 0px;
+	font-family: Calibri, sans-serif;
+	background: radial-gradient(circle at 0% 100%, rgb(9, 9, 8), rgb(34, 36, 39) 100%);
+	color: rgb(220, 220, 220);
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+	min-width: 1000px;
+	min-height: 750px;
+	-webkit-box-sizing: border-box;
+	/* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;
+	/* Firefox, other Gecko */
+	box-sizing: border-box;
+	overflow-y: hidden;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    float: left;
+}
+.container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    float: left;
+}
+
+.recipe-list {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    float: left;
+    border-right: 2px solid rgb(80, 80, 80);
+    padding: .25rem;
+}
+
+.recipe-list-header {
+    position: relative;
+	font-size: 26px;
+	font-weight: lighter;
+	font-family: Calibri, sans-serif;
+	text-transform: uppercase;
+	color: rgb(200, 200, 200);
+	padding: 5px 0px 0px 0px;
+	margin: 0px 0px 15px 0px;
+	letter-spacing: 3px;
+}
+
+.recipe-list-row {
+    width: 100%;
+    position: relative;
+    float: left;
+    padding: 1rem;
+    border-bottom: 2px solid rgb(80, 80, 80);
+    font-family: Calibri, sans-serif;
+    text-transform: uppercase;
+    color: rgb(180, 180, 180);
+}
+
+.recipe-list-row:hover {
+    background: rgb(40, 40, 40);
+}
+
+.recipe-list-row:active {
+    color: rgb(255, 255, 255);
+}
+
+.selected {
+    color: rgb(255, 255, 255);
+    border-bottom:2px solid rgb(242, 138, 34);
 }

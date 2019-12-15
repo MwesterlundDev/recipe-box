@@ -1,3 +1,5 @@
+# This project is intended to teach me how to use react
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
