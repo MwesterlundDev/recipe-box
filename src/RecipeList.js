@@ -7,7 +7,7 @@ const RecipeRows = props => {
             selected = (props.selectedRecipe.id && recipe.id === props.selectedRecipe.id) ? "selected" : ""
         }
         return (
-            <div className={"recipe-list-row "  + selected} title={recipe.description} onClick={() => props.handleSelect(recipe)}>
+            <div key={"recipe-row-" + index} className={"recipe-list-row "  + selected} title={recipe.description} onClick={() => props.handleSelect(recipe)}>
                 {recipe.title}
             </div>
         )
@@ -16,14 +16,25 @@ const RecipeRows = props => {
     return rows;
 }
 
+const RecipeListControls = props => {
+    return (
+        <div id="recipe-list-controls">
+            <input type="button" className="add-button" value="+" onClick={() => props.addNew()}/>
+        </div>
+    )
+}
+
 class RecipeList extends Component {
 
     render() {
-        const { recipes, selectedRecipe, handleSelect } = this.props;
+        const { recipes, selectedRecipe, handleSelect, isAddNew, addNew } = this.props;
         return ( 
             <div className="recipe-list">
                 <div className="recipe-list-header">Recipe List</div>
-                <RecipeRows recipes={recipes} selectedRecipe={selectedRecipe} handleSelect={handleSelect} />
+                <div id="recipe-list-wrapper">
+                    <RecipeRows recipes={recipes} selectedRecipe={selectedRecipe} handleSelect={handleSelect} />
+                </div>
+                <RecipeListControls isAddNew={isAddNew} addNew={addNew} />
             </div>
         )
     }

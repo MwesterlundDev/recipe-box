@@ -5,6 +5,9 @@ import Viewer from "./Viewer"
 
 class App extends Component {
 
+
+    // a couple things to add... 
+    // maybe add a grouping for a recipe ingridients and steps
     state = {
         recipes: [
             {
@@ -14,11 +17,11 @@ class App extends Component {
                 ingridients: [
                     {
                         size: "1 Whole",
-                        ingrident: "Chicken"
+                        ingridient: "Chicken"
                     },
                     {
                         size: "1 cup",
-                        ingrident: "Thai Basil"
+                        ingridient: "Thai Basil"
                     }
                 ],
                 steps: [
@@ -34,11 +37,11 @@ class App extends Component {
                 ingridients: [
                     {
                         size: "1 Whole",
-                        ingrident: "Chicken"
+                        ingridient: "Chicken"
                     },
                     {
                         size: "1 cup",
-                        ingrident: "Thai Basil"
+                        ingridient: "Thai Basil"
                     }
                 ],
                 steps: [
@@ -55,19 +58,19 @@ class App extends Component {
                 ingridients: [
                     {
                         size: "1 Whole",
-                        ingrident: "Chicken"
+                        ingridient: "Chicken"
                     },
                     {
                         size: "1 cup",
-                        ingrident: "Thai Basil"
+                        ingridient: "Thai Basil"
                     },
                     {
                         size: "1 clove",
-                        ingrident: "Thing 1"
+                        ingridient: "Thing 1"
                     },
                     {
                         size: "1 teaspoon",
-                        ingrident: "Awesome Sauce"
+                        ingridient: "Awesome Sauce"
                     }
                 ],
                 steps: [
@@ -81,6 +84,7 @@ class App extends Component {
             }
         ],
         selectedRecipe: null,
+        isAddNew: false,
     }
 
     handleSelect = recipe => {
@@ -99,12 +103,26 @@ class App extends Component {
 
     }
 
+    addNew = () => {
+        
+        if (!this.state.isAddNew) {
+            console.log("App.addNew")
+            const isAddNew = true;
+            this.setState({isAddNew})
+        }
+    }
+
     render() {
-        const { recipes, selectedRecipe } = this.state // the { property } gets the thing with that property
+        const { recipes, selectedRecipe, isAddNew } = this.state // the { property } gets the thing with that property
         return (
             <div className="container">
-                <RecipeList recipes={recipes} selectedRecipe={selectedRecipe} handleSelect={this.handleSelect}/>
-                <Viewer selectedRecipe={selectedRecipe}/>
+                <RecipeList 
+                    recipes={recipes} 
+                    selectedRecipe={selectedRecipe} 
+                    handleSelect={this.handleSelect} 
+                    isAddNew={isAddNew} 
+                    addNew={this.addNew}/>
+                <Viewer selectedRecipe={selectedRecipe} isAddNew={isAddNew}/>
             </div>
         )
 

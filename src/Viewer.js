@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
+import RecipeStepList from './StepList'
+import RecipeIngridientList from './IngredientList'
+import RecipeEditForm from './RecipeEditForm'
 
 const Header = props => {
-    const { selectedRecipe } = props
+    const { selectedRecipe, setEdit } = props
 
     if (selectedRecipe) {
         return (
             <div className="recipe-viewer-header">
-                <div className="recipie-title">{selectedRecipe.title}</div>
+                <div className="recipe-title">{selectedRecipe.title}</div>
+                <div className="recipe-description">{selectedRecipe.description}</div>
+                <div className="recipe-vewier-controls">
+                    <input type="button" value="Edit" className="recipe-edit-button" onClick={setEdit} />
+                </div>
             </div>
         )
     } else {
         return (
             <div className="recipe-viewer-header">
-                <div className="recipie-title">Please Select a Recipe</div>
+                <div className="recipe-title">Please Select a Recipe</div>
             </div>
         )
     }
@@ -20,12 +27,37 @@ const Header = props => {
 
 class Viewer extends Component {
 
-    render() {
-        const { selectedRecipe } = this.props
+    state = {
+        edit: false
+    }
 
-        return <div id="recipe-viewer">
-            <Header selectedRecipe={selectedRecipe} />
-        </div>
+    render() {
+        const { selectedRecipe, isAddNew } = this.props
+
+        if (isAddNew) {
+            console.log("ADD NEW ONE!")
+            return (
+                <div className="recipe-viewer-content">
+                    <RecipeEditForm />
+                </div>
+            )
+        }
+
+        if (selectedRecipe) { 
+            return (<div id="recipe-viewer">
+                <div className="recipe-viewer-content">
+                    <Header selectedRecipe={selectedRecipe} />
+                    <RecipeIngridientList ingridients={selectedRecipe.ingridients} />
+                    <RecipeStepList steps={selectedRecipe.steps} />
+                </div>
+            </div>)
+        } else {
+            return (<div id="recipe-viewer">
+            <div className="recipe-viewer-content">
+                <Header selectedRecipe={selectedRecipe} />
+            </div>
+        </div>)
+        }
     }
 }
 
