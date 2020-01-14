@@ -5,7 +5,7 @@ const INITIAL_STATE = {
         id: null,
         title: '',
         description: '',
-        ingridients: [],
+        ingredients: [],
         steps: []
     }
 }

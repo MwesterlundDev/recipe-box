@@ -164,7 +164,7 @@ body {
 	margin: 2rem 0rem;
 }
 
-.recipe-ingridient-row {
+.recipe-ingredient-row {
 	width: 100%;
     position: relative;
     float: left;
@@ -177,7 +177,7 @@ ul {
 	list-style: none;
 }
 
-.recipe-ingridient-row-size {
+.recipe-ingredient-row-size {
 	width: calc(25% - .5rem);
 	margin: 0 .25rem;
 	position: relative;
@@ -185,7 +185,7 @@ ul {
 	text-align: right;
 }
 
-.recipe-ingridient-row-ingridient {
+.recipe-ingredient-row-ingredient {
 	width: calc(75% - .5rem);
 	margin: 0 .25rem;
 	position: relative;
