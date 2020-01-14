@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
-import RecipeStepList from './StepList'
+import RecipeStepList from './StepList' // this is old, I am not sure if this how I want to do this..
 import RecipeIngridientList from './IngredientList'
 import RecipeEditForm from './RecipeEditForm'
 
 const Header = props => {
-    const { selectedRecipe, setEdit } = props
+    const { recipe, setEdit } = props
 
-    if (selectedRecipe) {
+    if (recipe.id != null) {
         return (
             <div className="recipe-viewer-header">
-                <div className="recipe-title">{selectedRecipe.title}</div>
-                <div className="recipe-description">{selectedRecipe.description}</div>
+                <div className="recipe-title">{recipe.title}</div>
+                <div className="recipe-description">{recipe.description}</div>
                 <div className="recipe-vewier-controls">
                     <input type="button" value="Edit" className="recipe-edit-button" onClick={setEdit} />
                 </div>
@@ -36,7 +36,7 @@ class RecipeViewerComponent extends Component {
     }
 
     render() {
-        const { selectedRecipe, isAddNew } = this.props
+        const { recipe, isAddNew } = this.props
 
         if (isAddNew) {
             console.log("ADD NEW ONE!")
@@ -47,18 +47,18 @@ class RecipeViewerComponent extends Component {
             )
         }
 
-        if (selectedRecipe) { 
+        if (recipe.id != null) { 
             return (<div id="recipe-viewer">
                 <div className="recipe-viewer-content">
-                    <Header selectedRecipe={selectedRecipe} />
-                    <RecipeIngridientList ingridients={selectedRecipe.ingridients} />
-                    <RecipeStepList steps={selectedRecipe.steps} />
+                    <Header recipe={recipe} />
+                    <RecipeIngridientList ingridients={recipe.ingridients} />
+                    <RecipeStepList steps={recipe.steps} />
                 </div>
             </div>)
         } else {
             return (<div id="recipe-viewer">
             <div className="recipe-viewer-content">
-                <Header selectedRecipe={selectedRecipe} />
+                <Header recipe={recipe} />
             </div>
         </div>)
         }

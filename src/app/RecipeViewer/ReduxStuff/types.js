@@ -1,0 +1,5 @@
+const RECIPE_SELECTED = 'RECIPE_SELECTED';
+
+export default {
+    RECIPE_SELECTED,
+}
