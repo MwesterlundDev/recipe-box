@@ -7,7 +7,7 @@ const RecipeRows = props => {
         //     selected = (props.selectedRecipe.id && recipe.id === props.selectedRecipe.id) ? "selected" : ""
         // }
         return (
-            <div key={"recipe-row-" + index} className={"recipe-list-row "  + selected} title={recipe.description} onClick={() => props.handleSelect(recipe.id)}>
+            <div key={"recipe-row-" + index} className={"recipe-list-row "  + selected} title={recipe.description} onClick={() => props.handleSelect(recipe)}>
                 {recipe.title}
             </div>
         )

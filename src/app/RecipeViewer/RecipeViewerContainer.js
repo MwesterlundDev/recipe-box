@@ -2,21 +2,11 @@ import { connect } from 'react-redux'
 
 import RecipeViewerComponent from './RecipeViewerCompenent'
 
-
-const getRecipeFromRecipes = (recipes, id) => {
-    var selectedRecipes = recipes.filter((recipe) => {
-        return recipe.id === id
-    })
-    
-    return selectedRecipes[0];
-}
-
 const mapStateToProps = (state) => {
-    const { recipes, selectedRecipeId } = state.recipeListReducer;
-
+    const { recipe } = state.recipeViewerReducer
 
     return {
-        selectedRecipe: (selectedRecipeId) ? getRecipeFromRecipes(recipes, selectedRecipeId) : null
+        recipe: recipe
     }
 }
 
