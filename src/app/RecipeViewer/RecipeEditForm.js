@@ -31,7 +31,7 @@ class RecipeEditForm extends Component {
         this.initialState = {
             title: '',
             description: '',
-            ingridients: [],
+            ingredients: [],
             steps: []
         }
 
@@ -58,7 +58,7 @@ class RecipeEditForm extends Component {
     }
 
     render() {
-        const { title, description, ingridients, steps } = this.state
+        const { title, description, ingredients, steps } = this.state
 
         return (
             <form className="recipe-viewer-form">

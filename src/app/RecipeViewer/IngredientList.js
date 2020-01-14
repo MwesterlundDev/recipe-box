@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-const RecipeIngridientRows = props => {
+const RecipeIngredientRows = props => {
 
-    const rows = props.ingridients.map((ing, index) => {
+    const rows = props.ingredients.map((ing, index) => {
 
         return (
-            <li key={"recipe-ingridient-row-" + index} className="recipe-ingridient-row" title={ing.ingridient}>
-                <div className="recipe-ingridient-row-size">{ing.size} - </div>
-                <div className="recipe-ingridient-row-ingridient">{ing.ingridient}</div>
+            <li key={"recipe-ingredient-row-" + index} className="recipe-ingredient-row" title={ing.ingredient}>
+                <div className="recipe-ingredient-row-size">{ing.size} - </div>
+                <div className="recipe-ingredient-row-ingredient">{ing.ingredient}</div>
             </li>
         )
     })
@@ -16,17 +16,17 @@ const RecipeIngridientRows = props => {
 
 }
 
-class RecipeIngridientList extends Component {
+class RecipeIngredientList extends Component {
 
     
     render() {
-        const { ingridients } = this.props
+        const { ingredients } = this.props
 
         return (
-            <div id="recipe-ingridients">
-                <div className="recipe-title">Ingridients</div>
+            <div id="recipe-ingredients">
+                <div className="recipe-title">Ingredients</div>
                 <ul>
-                    <RecipeIngridientRows ingridients={ingridients} />
+                    <RecipeIngredientRows ingredients={ingredients} />
                 </ul>
             </div>
         )
@@ -34,4 +34,4 @@ class RecipeIngridientList extends Component {
 
 }
 
-export default RecipeIngridientList
+export default RecipeIngredientList

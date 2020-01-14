@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import RecipeStepList from './StepList' // this is old, I am not sure if this how I want to do this..
-import RecipeIngridientList from './IngredientList'
+import RecipeIngredientList from './IngredientList'
 import RecipeEditForm from './RecipeEditForm'
 
 const Header = props => {
@@ -51,7 +51,7 @@ class RecipeViewerComponent extends Component {
             return (<div id="recipe-viewer">
                 <div className="recipe-viewer-content">
                     <Header recipe={recipe} />
-                    <RecipeIngridientList ingridients={recipe.ingridients} />
+                    <RecipeIngredientList ingredients={recipe.ingredients} />
                     <RecipeStepList steps={recipe.steps} />
                 </div>
             </div>)

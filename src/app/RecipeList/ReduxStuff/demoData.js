@@ -3,14 +3,14 @@ const demo = [
             id: 1,
             title: "10 Minute Thai Basil Chicken",
             description: "This Thai basil chicken recipe takes just 3 minutes to prepare and 7 minutes to cook. Served along with steamed rice, it's restaurant food, fast.",
-            ingridients: [
+            ingredients: [
                 {
                     size: "1 Whole",
-                    ingridient: "Chicken"
+                    ingredient: "Chicken"
                 },
                 {
                     size: "1 cup",
-                    ingridient: "Thai Basil"
+                    ingredient: "Thai Basil"
                 }
             ],
             steps: [
@@ -23,14 +23,14 @@ const demo = [
             id: 2,
             title: "Test 1",
             description: "This is test 2",
-            ingridients: [
+            ingredients: [
                 {
                     size: "1 Whole",
-                    ingridient: "Chicken"
+                    ingredient: "Chicken"
                 },
                 {
                     size: "1 cup",
-                    ingridient: "Thai Basil"
+                    ingredient: "Thai Basil"
                 }
             ],
             steps: [
@@ -44,22 +44,22 @@ const demo = [
             id: 3,
             title: "Test 3",
             description: "This is test 3",
-            ingridients: [
+            ingredients: [
                 {
                     size: "1 Whole",
-                    ingridient: "Chicken"
+                    ingredient: "Chicken"
                 },
                 {
                     size: "1 cup",
-                    ingridient: "Thai Basil"
+                    ingredient: "Thai Basil"
                 },
                 {
                     size: "1 clove",
-                    ingridient: "Thing 1"
+                    ingredient: "Thing 1"
                 },
                 {
                     size: "1 teaspoon",
-                    ingridient: "Awesome Sauce"
+                    ingredient: "Awesome Sauce"
                 }
             ],
             steps: [
