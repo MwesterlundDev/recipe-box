@@ -25,10 +25,14 @@ const Header = props => {
     }
 }
 
-class Viewer extends Component {
+class RecipeViewerComponent extends Component {
 
-    state = {
-        edit: false
+    constructor (props) {
+        super(props) 
+
+        this.state = {
+            isEdit: false
+        }
     }
 
     render() {
@@ -61,4 +65,4 @@ class Viewer extends Component {
     }
 }
 
-export default Viewer
+export default RecipeViewerComponent
