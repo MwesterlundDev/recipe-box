@@ -37,7 +37,7 @@ class RecipeListComponent extends Component {
 
     render() {
         // const { recipes, selectedRecipe, handleSelect, isAddNew, addNew } = this.props;
-        const { recipes, selectedRecipeId, selectRecipe} = this.props;
+        const { recipes, selectedRecipeId, selectRecipe, addNew} = this.props;
 
         console.log("this.props: ", this.props)
         return ( 
@@ -46,7 +46,7 @@ class RecipeListComponent extends Component {
                 <div id="recipe-list-wrapper">
                     <RecipeRows recipes={recipes} selectedRecipeId={selectedRecipeId} handleSelect={selectRecipe} />
                 </div>
-                {/* <RecipeListControls isAddNew={isAddNew} addNew={addNew} /> */}
+                <RecipeListControls addNew={addNew}/>
             </div>
         )
     }

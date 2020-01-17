@@ -127,6 +127,8 @@ body {
 	position: relative;
 	max-width: 780px;
 	margin: auto;
+	overflow-y: auto;
+	height: 100%;
 }
 
 .recipe-viewer-header {
@@ -145,11 +147,6 @@ body {
 	letter-spacing: 3px;
 }
 
-#recipe-steps {
-	width: 100%;
-	margin: 2rem 0rem;
-}
-
 .recipe-step-row {
 	width: 100%;
     position: relative;
@@ -162,6 +159,15 @@ body {
 #recipe-steps {
 	width: 100%;
 	margin: 2rem 0rem;
+	position: relative;
+	float: left;
+}
+
+#recipe-ingredients {
+	width: 100%;
+	margin: 2rem 0rem;
+	position: relative;
+	float: left;
 }
 
 .recipe-ingredient-row {
@@ -234,4 +240,22 @@ ul {
 	resize: none;
 }
 
+.new-recipe-item-row {
+	width: 100%;
+	position: relative;
+	float: left;
+}
+
+.new-ingredient-input {
+	width: calc(50% - 2rem);
+	position: relative;
+	float: left;
+	font-family: Calibri, sans-serif;
+	color: rgb(220, 220, 220);
+	background: none;
+	border: none;
+	border-bottom: 1px solid rgb(80, 80, 80);
+	height: 1.5rem;
+	margin: 0.12rem 0.25rem;
+}
 /*  Add media queries here? **/

@@ -7,6 +7,20 @@ const recipeSelected = (recipe) => {
     }
 }
 
+const createNewRecipe = () => {
+    return {
+        type: types.CREATE_NEW_RECIPE
+    }
+}
+
+const cancelEdit = () => {
+    return {
+        type: types.CANCEL_EDIT,
+    }
+}
+
 export default {
-    recipeSelected
+    recipeSelected,
+    createNewRecipe,
+    cancelEdit
 }

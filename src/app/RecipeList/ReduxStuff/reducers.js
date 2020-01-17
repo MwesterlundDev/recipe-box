@@ -11,6 +11,7 @@ const recipeListReducer = (state = INITIAL_STATE, action) => {
         case types.ADD_NEW_RECIPE:
             const { recipe } = action
 
+            recipe.id = new Date().getTime(); // bad id but should be unique for now
             return {
                 ...state,
                 recipes: [...state.recipes, recipe]
