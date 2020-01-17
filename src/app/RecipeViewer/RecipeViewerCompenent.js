@@ -36,13 +36,13 @@ class RecipeViewerComponent extends Component {
     }
 
     render() {
-        const { recipe, isAddNew } = this.props
+        const { recipe, isNew, addRecipe, cancelEdit } = this.props
 
-        if (isAddNew) {
+        if (isNew) {
             console.log("ADD NEW ONE!")
             return (
                 <div className="recipe-viewer-content">
-                    <RecipeEditForm />
+                    <RecipeEditForm recipe={recipe} addRecipe={addRecipe} cancel={cancelEdit} />
                 </div>
             )
         }

@@ -28,9 +28,15 @@ const mapDispatchToProps = (dispatch) => {
         }
     };
 
+    const addNew = () => {
+            dispatch(recipeViewerOperations.createNewRecipe())
+            dispatch(recipeListOperations.selectRecipe(null))
+        }
+
     return {
         fetchRecipes,
-        selectRecipe
+        selectRecipe,
+        addNew
     }
 
 }
