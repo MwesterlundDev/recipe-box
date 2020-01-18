@@ -8,7 +8,8 @@ const RecipeRows = props => {
         // }
         return (
             <div key={"recipe-row-" + index} className={"recipe-list-row "  + selected} title={recipe.description} onClick={() => props.handleSelect(recipe)}>
-                {recipe.title}
+                <div className="recipe-list-label">{recipe.title}</div>
+                <button className="remove-button" title={"Remove " + recipe.title} onClick={(event) => props.handleRemoveClick(event, recipe.id)}>-</button>
             </div>
         )
     })
@@ -27,12 +28,19 @@ const RecipeListControls = props => {
 class RecipeListComponent extends Component {
     constructor(props) {
         super(props);
+
+        this.handleRemoveClick = this.handleRemoveClick.bind(this);
     }
 
     componentDidMount() {
         console.log("this.props: ", this.props)
         this.props.fetchRecipes();// comes later?
 
+    }
+
+    handleRemoveClick(event, id) {
+        event.stopPropagation();
+        this.props.remove(id);
     }
 
     render() {
@@ -44,7 +52,11 @@ class RecipeListComponent extends Component {
             <div className="recipe-list">
                 <div className="recipe-list-header">Recipe List</div>
                 <div id="recipe-list-wrapper">
-                    <RecipeRows recipes={recipes} selectedRecipeId={selectedRecipeId} handleSelect={selectRecipe} />
+                    <RecipeRows 
+                        recipes={recipes} 
+                        selectedRecipeId={selectedRecipeId} 
+                        handleSelect={selectRecipe}
+                        handleRemoveClick={this.handleRemoveClick}/>
                 </div>
                 <RecipeListControls addNew={addNew}/>
             </div>

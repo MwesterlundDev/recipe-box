@@ -92,6 +92,23 @@ body {
 	background: rgb(0, 200, 0)
 }
 
+.remove-button {
+	background: rgb(200, 0, 43);
+	border: none;
+	color: rgb(180, 180, 180);
+	font-weight: bold;
+	font-size: 1.5rem;
+	border-radius: .25rem;
+}
+
+.remove-button:hover {
+	color: rgb(255, 255, 255);
+}
+
+.remove-button:active {
+	background: rgb(235, 70, 106);
+}
+
 .recipe-list-row {
     width: 100%;
     position: relative;
@@ -115,6 +132,12 @@ body {
 .selected {
     color: rgb(255, 255, 255);
     border-bottom:2px solid rgb(242, 138, 34);
+}
+
+.recipe-list-label {
+	width: calc(100% - 1.8rem);
+	position: relative;
+	float: left;
 }
 
 #recipe-viewer {

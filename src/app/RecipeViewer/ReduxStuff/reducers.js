@@ -17,7 +17,7 @@ const recipeViewerReducer = (state = INITIAL_STATE, action) => {
         case types.RECIPE_SELECTED:
             return {
                 ...state,
-                recipe: (state.recipe.id !== action.recipe.id && action.recipe.id != null) ? { ...action.recipe } : INITIAL_STATE.recipe,
+                recipe: (action.recipe != null && state.recipe.id !== action.recipe.id && action.recipe.id != null) ? { ...action.recipe } : INITIAL_STATE.recipe,
                 isNew: false
             }
         case types.CREATE_NEW_RECIPE:
@@ -27,6 +27,8 @@ const recipeViewerReducer = (state = INITIAL_STATE, action) => {
             }
         case types.CANCEL_EDIT: 
             return INITIAL_STATE
+        case types.RECIPE_DELETED:
+            return (action.id === state.recipe.id) ? INITIAL_STATE : state 
         default:
             return state
     }

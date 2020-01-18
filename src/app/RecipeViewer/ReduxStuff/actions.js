@@ -19,8 +19,16 @@ const cancelEdit = () => {
     }
 }
 
+const recipeDeleted = (id) => {
+    return {
+        type: types.RECIPE_DELETED,
+        id: id
+    }
+}
+
 export default {
     recipeSelected,
     createNewRecipe,
-    cancelEdit
+    cancelEdit,
+    recipeDeleted
 }

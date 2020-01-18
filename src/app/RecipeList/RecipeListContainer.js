@@ -33,10 +33,16 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(recipeListOperations.selectRecipe(null))
         }
 
+    const remove = (id) => {
+        dispatch(recipeListOperations.deleteRecipe(id))
+        dispatch(recipeViewerOperations.recipeDeleted(id))
+    }
+
     return {
         fetchRecipes,
         selectRecipe,
-        addNew
+        addNew,
+        remove
     }
 
 }

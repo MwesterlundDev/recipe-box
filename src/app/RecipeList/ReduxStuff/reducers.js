@@ -1,4 +1,5 @@
 import types from './types'
+import utils from '../../../utils/mark'
 
 const INITIAL_STATE = {
     recipes: [],
@@ -17,7 +18,21 @@ const recipeListReducer = (state = INITIAL_STATE, action) => {
                 recipes: [...state.recipes, recipe]
             }
         case types.DELETE_RECIPE:
-            return state; // not implemented yet
+            const index = utils.findIndexByValue(state.recipes, "id", action.id)
+
+            if (index < 0) {
+                return state;
+            }
+
+            const recipeList = [
+                ...state.recipes.slice(0, index),
+                ...state.recipes.slice(index + 1, state.recipes.length)
+              ];
+            return { 
+                ...state,
+                selectedRecipeId: (state.selectedRecipeId === action.id) ? null : state.selectedRecipeId,
+                recipes: recipeList
+            }
         case types.SELECT_RECIPE:
             const { id } = action
 

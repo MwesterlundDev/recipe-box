@@ -26,10 +26,18 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(recipeListOperations.selectRecipe(null));
         dispatch(recipeViewerOperations.cancelEdit())
     }
+    
+    const remove = (id) => {
+        dispatch(recipeListOperations.deleteRecipe(id))
+        // dispatch(recipeListOperations.selectRecipe(null));
+        dispatch(recipeViewerOperations.recipeSelected(null))
+
+    }
 
     return {
         addRecipe,
-        cancelEdit
+        cancelEdit,
+        remove
     }
 }
 
