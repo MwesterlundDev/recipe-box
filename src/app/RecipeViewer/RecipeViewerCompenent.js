@@ -13,6 +13,7 @@ const Header = props => {
                 <div className="recipe-description">{recipe.description}</div>
                 <div className="recipe-vewier-controls">
                     <input type="button" value="Edit" className="recipe-edit-button" onClick={setEdit} />
+                    <button className="remove-button" onClick={props.removeRecipe}>-</button>
                 </div>
             </div>
         )
@@ -33,6 +34,12 @@ class RecipeViewerComponent extends Component {
         this.state = {
             isEdit: false
         }
+
+        this.removeRecipe = this.removeRecipe.bind(this);
+    }
+
+    removeRecipe() {
+        this.props.remove(this.props.recipe.id)
     }
 
     render() {
@@ -50,7 +57,7 @@ class RecipeViewerComponent extends Component {
         if (recipe.id != null) { 
             return (<div id="recipe-viewer">
                 <div className="recipe-viewer-content">
-                    <Header recipe={recipe} />
+                    <Header recipe={recipe} removeRecipe={this.removeRecipe} />
                     <RecipeIngredientList ingredients={recipe.ingredients} />
                     <RecipeStepList steps={recipe.steps} />
                 </div>

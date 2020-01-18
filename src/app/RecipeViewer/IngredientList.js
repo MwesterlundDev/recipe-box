@@ -18,7 +18,6 @@ const RecipeIngredientRows = props => {
 
 class RecipeIngredientList extends Component {
 
-    
     render() {
         const { ingredients } = this.props
 
