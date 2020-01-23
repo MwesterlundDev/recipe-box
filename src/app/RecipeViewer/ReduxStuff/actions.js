@@ -26,9 +26,24 @@ const recipeDeleted = (id) => {
     }
 }
 
+const editRecipe = () => {
+    return {
+        type: types.EDIT_RECIPE, // DO I NEED TO PASS THE ID?
+    }
+}
+
+const recipeUpdated = (recipe) => {
+    return {
+        type: types.RECIPE_UPDATED,
+        recipe: recipe
+    }
+}
+
 export default {
     recipeSelected,
     createNewRecipe,
     cancelEdit,
-    recipeDeleted
+    recipeDeleted,
+    editRecipe,
+    recipeUpdated
 }

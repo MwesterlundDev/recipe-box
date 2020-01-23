@@ -45,8 +45,10 @@ class RecipeEditForm extends Component {
         this.state = this.initialState
 
         this.save = this.save.bind(this);
-        this.addNewIngredient = this.addNewIngredient.bind(this)
-        this.addNewStep = this.addNewStep.bind(this)
+        this.addNewIngredient = this.addNewIngredient.bind(this);
+        this.addNewStep = this.addNewStep.bind(this);
+        this.setEditState = this.setEditState.bind(this);
+        this.cancel = this.cancel.bind(this);
     }
 
     save = () => {
@@ -54,13 +56,19 @@ class RecipeEditForm extends Component {
         // DO SOME VALIDATION HERE
 
         if (this.state.title && this.state.description) {
-            this.props.addRecipe(this.state)
+            if (this.props.isNew) {
+                this.props.addRecipe(this.state)
+            } else if(this.props.isEdit) {
+                console.log("Save this edit: ", this.state)
+                this.props.update(this.state);
+            }
         }
     }
 
-    // cancel = () => {
-    //     console.log("CANCEL THIS: ", this.state)
-    // }
+    cancel = () => {
+        console.log("CANCEL THIS: ", this.state)
+        this.props.cancel(this.props.isNew);
+    }
 
     handleChange = event => {
         const { name, value } = event.target
@@ -83,18 +91,29 @@ class RecipeEditForm extends Component {
         }))
     }
 
+    setEditState() {
+        this.setState(this.props.recipe)
+
+    }
+
+    componentDidMount() {
+        if (this.props.isEdit) {
+            this.setEditState()
+        }
+    }
+ 
     render() {
         // const { title, description, ingredients, steps } = this.state
 
-        const { recipe, save, cancel } = this.props;
+        const { recipe, save, cancel, isEdit, isNew } = this.props;
 
         return (
             <form className="recipe-viewer-form">
                 <div className="recipe-title">Add New Recipe</div>
-                <Header title={this.title} 
-                    description={this.description} 
+                <Header title={this.state.title} 
+                    description={this.state.description} 
                     save={this.save} 
-                    cancel={cancel} 
+                    cancel={this.cancel} 
                     handleChange={this.handleChange}/>
                 <RecipeIngredientList ingredients={this.state.ingredients} />
                 <NewIngredientRow addNewIngredient={this.addNewIngredient} />

@@ -7,6 +7,13 @@ const addNewRecipe = (recipe) => {
     }
 }
 
+const updateRecipe = (recipe) => {
+    return {
+        type: types.UPDATE_RECIPE,
+        recipe: recipe
+    }
+}
+
 const deleteRecipe = (id) => {
     return {
         type: types.DELETE_RECIPE,
@@ -32,10 +39,12 @@ const receivedRecipes = (recipes) => {
     }
 }
 
+
 export default {
     addNewRecipe,
     deleteRecipe,
     selectRecipe,
     requestRecipes,
-    receivedRecipes
+    receivedRecipes,
+    updateRecipe
 }

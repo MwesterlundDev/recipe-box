@@ -17,6 +17,24 @@ const recipeListReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 recipes: [...state.recipes, recipe]
             }
+
+        case types.UPDATE_RECIPE:
+            const recipeIndex = utils.findIndexByValue(state.recipes, "id", action.recipe.id);
+
+            const updatedRecipes = state.recipes.map((recipe, index) => {
+                if (index != recipeIndex) {
+                    return recipe;
+                }
+
+                return {
+                    ...recipe,
+                    ...action.recipe
+                }
+            })
+            return {
+                ...state,
+                recipes: updatedRecipes
+            }
         case types.DELETE_RECIPE:
             const index = utils.findIndexByValue(state.recipes, "id", action.id)
 

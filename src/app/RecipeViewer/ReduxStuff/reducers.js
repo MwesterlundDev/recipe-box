@@ -8,7 +8,8 @@ const INITIAL_STATE = {
         ingredients: [],
         steps: []
     },
-    isNew: false
+    isNew: false,
+    isEdit: false,
 }
 
 
@@ -20,15 +21,34 @@ const recipeViewerReducer = (state = INITIAL_STATE, action) => {
                 recipe: (action.recipe != null && state.recipe.id !== action.recipe.id && action.recipe.id != null) ? { ...action.recipe } : INITIAL_STATE.recipe,
                 isNew: false
             }
+
         case types.CREATE_NEW_RECIPE:
             return {
                 ...INITIAL_STATE,
-                isNew: true
+                isNew: true,
             }
+
         case types.CANCEL_EDIT: 
-            return INITIAL_STATE
+            return (state.isEdit) ? { ...state, isEdit: false} : INITIAL_STATE
+
         case types.RECIPE_DELETED:
             return (action.id === state.recipe.id) ? INITIAL_STATE : state 
+        
+        case types.EDIT_RECIPE:
+            return {
+                ...state,
+                isEdit: true,
+            }
+
+        case types.RECIPE_UPDATED:
+            return {
+                ...state,
+                recipe: {
+                    ...action.recipe
+                },
+                isEdit: false,
+            }
+        
         default:
             return state
     }
