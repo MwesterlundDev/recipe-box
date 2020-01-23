@@ -12,7 +12,7 @@ const Header = props => {
                 <div className="recipe-title">{recipe.title}</div>
                 <div className="recipe-description">{recipe.description}</div>
                 <div className="recipe-vewier-controls">
-                    <input type="button" value="Edit" className="recipe-edit-button" onClick={setEdit} />
+                    <button className="recipe-edit-button" onClick={props.edit}>Edit</button>
                     <button className="remove-button" onClick={props.removeRecipe}>-</button>
                 </div>
             </div>
@@ -43,13 +43,19 @@ class RecipeViewerComponent extends Component {
     }
 
     render() {
-        const { recipe, isNew, addRecipe, cancelEdit } = this.props
+        const { recipe, isEdit, isNew, addRecipe, updateRecipe, cancelEdit, edit } = this.props
 
-        if (isNew) {
+        if (isNew || isEdit) {
             console.log("ADD NEW ONE!")
             return (
                 <div className="recipe-viewer-content">
-                    <RecipeEditForm recipe={recipe} addRecipe={addRecipe} cancel={cancelEdit} />
+                    <RecipeEditForm 
+                        recipe={recipe} 
+                        isEdit={isEdit} 
+                        isNew={isNew} 
+                        addRecipe={addRecipe} 
+                        cancel={cancelEdit}
+                        update={updateRecipe} />
                 </div>
             )
         }
@@ -57,7 +63,7 @@ class RecipeViewerComponent extends Component {
         if (recipe.id != null) { 
             return (<div id="recipe-viewer">
                 <div className="recipe-viewer-content">
-                    <Header recipe={recipe} removeRecipe={this.removeRecipe} />
+                    <Header recipe={recipe} removeRecipe={this.removeRecipe} edit={edit} />
                     <RecipeIngredientList ingredients={recipe.ingredients} />
                     <RecipeStepList steps={recipe.steps} />
                 </div>

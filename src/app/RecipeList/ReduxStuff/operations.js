@@ -2,6 +2,7 @@ import Creators from './actions';
 import demo from './demoData'
 
 const addNewRecipe = Creators.addNewRecipe;
+const updateRecipe = Creators.updateRecipe;
 const deleteRecipe = Creators.deleteRecipe;
 const selectRecipe = Creators.selectRecipe;
 const requestRecipes = Creators.requestRecipes;
@@ -25,6 +26,7 @@ const fetchRecipes = () => {
 
 export default {
     addNewRecipe,
+    updateRecipe,
     deleteRecipe,
     selectRecipe,
     fetchRecipes

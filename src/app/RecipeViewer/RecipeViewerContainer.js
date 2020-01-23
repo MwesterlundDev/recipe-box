@@ -5,11 +5,12 @@ import recipeListOperations from '../RecipeList/ReduxStuff/operations' // I DO N
 import recipeViewerOperations from './ReduxStuff/operations'
 
 const mapStateToProps = (state) => {
-    const { recipe, isNew } = state.recipeViewerReducer
+    const { recipe, isNew, isEdit } = state.recipeViewerReducer
 
     return {
         recipe: recipe,
-        isNew: isNew
+        isNew: isNew,
+        isEdit: isEdit
 
     }
 }
@@ -22,8 +23,10 @@ const mapDispatchToProps = (dispatch) => {
 
     }
 
-    const cancelEdit = () => {
-        dispatch(recipeListOperations.selectRecipe(null));
+    const cancelEdit = (isNew) => {
+        if (isNew) {
+            dispatch(recipeListOperations.selectRecipe(null));
+        }
         dispatch(recipeViewerOperations.cancelEdit())
     }
     
@@ -34,10 +37,21 @@ const mapDispatchToProps = (dispatch) => {
 
     }
 
+    const edit = () => {
+        dispatch(recipeViewerOperations.editRecipe())
+    }
+    
+    const updateRecipe = (recipe) => {
+        dispatch(recipeListOperations.updateRecipe(recipe));
+        dispatch(recipeViewerOperations.recipeUpdated(recipe)); // not to sure about this... 
+    }
+
     return {
         addRecipe,
+        updateRecipe,
         cancelEdit,
-        remove
+        remove,
+        edit,
     }
 }
 
